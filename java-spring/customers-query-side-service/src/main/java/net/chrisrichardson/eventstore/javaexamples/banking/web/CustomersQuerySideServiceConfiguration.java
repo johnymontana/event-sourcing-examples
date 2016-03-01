@@ -2,6 +2,7 @@ package net.chrisrichardson.eventstore.javaexamples.banking.web;
 
 import net.chrisrichardson.eventstore.client.config.EventStoreHttpClientConfiguration;
 import net.chrisrichardson.eventstore.javaexamples.banking.backend.queryside.customers.QuerySideCustomerConfiguration;
+import net.chrisrichardson.eventstore.javaexamples.banking.backend.queryside.customers.QuerySideCustomerNeo4jConfiguration;
 import net.chrisrichardson.eventstore.javaexamples.banking.commonswagger.CommonSwaggerConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.HttpMessageConverters;

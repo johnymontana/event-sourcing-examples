@@ -4,6 +4,7 @@ import net.chrisrichardson.eventstore.javaexamples.banking.common.customers.Cust
 import net.chrisrichardson.eventstore.javaexamples.banking.common.customers.ToAccountInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Collections;
 
@@ -15,6 +16,7 @@ public class CustomerInfoUpdateService {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     private QuerySideCustomerRepository accountInfoRepository;
+    @Autowired QuerySideCustomerNeo4jRepository repo;
 
     public CustomerInfoUpdateService(QuerySideCustomerRepository accountInfoRepository) {
         this.accountInfoRepository = accountInfoRepository;
@@ -34,6 +36,22 @@ public class CustomerInfoUpdateService {
             logger.info("Saved in mongo");
         } catch (Throwable t) {
             logger.error("Error during saving: ", t);
+            throw new RuntimeException(t);
+        }
+
+        try {
+            QuerySideNeo4jCustomer customer = new QuerySideNeo4jCustomer(customerInfo.getName().getFirstName(),
+                    customerInfo.getEmail(),
+                    customerInfo.getSsn(),
+                    customerInfo.getPhoneNumber(),
+                    customerInfo.getAddress().getStreet1(),
+                    customerInfo.getAddress().getStreet2(),
+                    customerInfo.getAddress().getCity(),
+                    customerInfo.getAddress().getState(),
+                    customerInfo.getAddress().getZipCode());
+            repo.save(customer);
+        } catch (Throwable t) {
+            logger.error("Error duing saving to Neo4j: ", t);
             throw new RuntimeException(t);
         }
     }

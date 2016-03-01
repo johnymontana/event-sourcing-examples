@@ -60,6 +60,7 @@ customersqueryside:
     - "8084:8080"
   links:
     - mongodb
+    - neo4j
   environment:
     EVENTUATE_API_KEY_ID:
     EVENTUATE_API_KEY_SECRET:
@@ -71,3 +72,9 @@ mongodb:
   command: mongod --smallfiles
   ports:
     - "27017:27017"
+
+neo4j:
+  image: neo4j:2.3.2
+  hostname: neo4j
+  ports:
+    - "7474:7474"
