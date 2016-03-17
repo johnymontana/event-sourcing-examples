@@ -1,4 +1,4 @@
-package net.chrisrichardson.eventstore.javaexamples.banking.backend.queryside.customers;
+package net.chrisrichardson.eventstore.javaexamples.banking.backend.queryside.customers.domain;
 
 import net.chrisrichardson.eventstore.javaexamples.banking.common.customers.Name;
 import org.neo4j.ogm.annotation.GraphId;

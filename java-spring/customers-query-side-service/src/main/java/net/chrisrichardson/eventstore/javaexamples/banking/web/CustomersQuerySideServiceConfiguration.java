@@ -14,7 +14,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 
 @Configuration
-@Import({QuerySideCustomerConfiguration.class, EventStoreHttpClientConfiguration.class, CommonSwaggerConfiguration.class})
+@Import({QuerySideCustomerConfiguration.class, QuerySideCustomerNeo4jConfiguration.class, EventStoreHttpClientConfiguration.class, CommonSwaggerConfiguration.class})
 @EnableAutoConfiguration
 @ComponentScan
 public class CustomersQuerySideServiceConfiguration {

@@ -70,6 +70,8 @@ mongodb:
   image: mongo:3.0.4
   hostname: mongodb
   command: mongod --smallfiles
+  volumes:
+  - /opt/mongodb/data
   ports:
     - "27017:27017"
 
@@ -78,3 +80,5 @@ neo4j:
   hostname: neo4j
   ports:
     - "7474:7474"
+  environment:
+    NEO4J_AUTH: none

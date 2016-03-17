@@ -1,5 +1,6 @@
-package net.chrisrichardson.eventstore.javaexamples.banking.backend.queryside.customers;
+package net.chrisrichardson.eventstore.javaexamples.banking.backend.queryside.customers.repository;
 
+import net.chrisrichardson.eventstore.javaexamples.banking.backend.queryside.customers.domain.QuerySideNeo4jCustomer;
 import org.springframework.data.neo4j.repository.GraphRepository;
 import org.springframework.stereotype.Repository;
 

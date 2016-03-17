@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * Created by lyonwj on 2/26/16.
  */
 @Configuration
-@EnableNeo4jRepositories(basePackages = "net.chrisrichardson.eventstore.javaexamples.banking.backend.queryside.customers.QuerySideCustomerNeo4jRepository")
+@EnableNeo4jRepositories(basePackages = "net.chrisrichardson.eventstore.javaexamples.banking.backend.queryside.customers.repository")
 @EnableTransactionManagement
 public class QuerySideCustomerNeo4jConfiguration extends Neo4jConfiguration {
 
@@ -28,6 +28,7 @@ public class QuerySideCustomerNeo4jConfiguration extends Neo4jConfiguration {
     @Bean
     public Neo4jServer neo4jServer() {
         String neo4jURI = env.getProperty("SPRING_DATA_NEO4J_URI");
+        // TODO: disable auth
         //return new RemoteServer("http://localhost:7474");
         return new RemoteServer(neo4jURI);
     }
@@ -35,7 +36,7 @@ public class QuerySideCustomerNeo4jConfiguration extends Neo4jConfiguration {
     @Bean
     public SessionFactory getSessionFactory() {
         // FIXME: with domain entity base packages
-        return new SessionFactory("net.chrisrichardson.eventstore.javaexamples.banking.backend.queryside.customers.QuerySideNeo4jCustomer");
+        return new SessionFactory("net.chrisrichardson.eventstore.javaexamples.banking.backend.queryside.customers.domain");
     }
 
     @Bean

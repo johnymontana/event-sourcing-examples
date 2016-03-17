@@ -1,5 +1,7 @@
 package net.chrisrichardson.eventstore.javaexamples.banking.backend.queryside.customers;
 
+import net.chrisrichardson.eventstore.javaexamples.banking.backend.queryside.customers.domain.QuerySideNeo4jCustomer;
+import net.chrisrichardson.eventstore.javaexamples.banking.backend.queryside.customers.repository.QuerySideCustomerNeo4jRepository;
 import net.chrisrichardson.eventstore.javaexamples.banking.common.customers.CustomerInfo;
 import net.chrisrichardson.eventstore.javaexamples.banking.common.customers.ToAccountInfo;
 import org.slf4j.Logger;
@@ -16,7 +18,8 @@ public class CustomerInfoUpdateService {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     private QuerySideCustomerRepository accountInfoRepository;
-    @Autowired QuerySideCustomerNeo4jRepository repo;
+    @Autowired
+    QuerySideCustomerNeo4jRepository repo;
 
     public CustomerInfoUpdateService(QuerySideCustomerRepository accountInfoRepository) {
         this.accountInfoRepository = accountInfoRepository;
